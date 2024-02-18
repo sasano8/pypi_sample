@@ -1,6 +1,11 @@
 
 
 ```
+mkdir -p packages
+mkdir -p dist
+```
+
+```
 docker compose up -d --build pypi-server
 ```
 

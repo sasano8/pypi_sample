@@ -19,7 +19,7 @@ for dir in "$PACKAGES_DIR"/*; do
       # bdist_wheel はコンパイル済みモジュールやバイナリを含めることができる
       # ソースだけ提供する場合は sdist を選択でよい
       echo "[PROCESS]$dir"
-      (cd "$dir" && python setup.py sdist --dist-dir $DIST_DIR)
+      (cd "$dir" && pyarmor obfuscate --src . --output $DIST_DIR --recursive --exclude tests/ "app.py setup.py")
     else
       echo "[SKIP   ]$dir => setup.py not found."
     fi

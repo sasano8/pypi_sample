@@ -7,8 +7,10 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
+      - ./site:/app/site
       - ./dist:/app/dist
       - ./packages:/app/packages
     ports:
       - "8080:8080"
-    command: ["pypi-server", "run", "-p", "8080", "dist"]
+    command: ["pypi-server", "run",  "-p", "8080", "site"]
+

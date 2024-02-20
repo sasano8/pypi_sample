@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pypi-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pypi-server
+  template:
+    metadata:
+      labels:
+        app: pypi-server
+    spec:
+      containers:
+      - name: pypi-server
+        image: pypiserver/pypiserver:v1.4.2
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: site-volume
+          mountPath: /data/packages
+        command: ["pypi-server", "-p", "8080", "/data/packages"]
+      volumes:
+      - name: site-volume
+        hostPath:
+          path: ...  # 公開するパッケージのフルパス(k8sは相対パスを受け付けない)
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: pypi-server
+spec:
+  selector:
+    app: pypi-server
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+

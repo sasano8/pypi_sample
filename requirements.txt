@@ -1,2 +1,2 @@
 pypiserver
-pyarmor
+pyarmor>=7.0,<8.0  # 8系からコマンド体系が変わりスクリプトの修正が必要

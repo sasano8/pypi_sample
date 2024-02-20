@@ -20,7 +20,7 @@ spec:
         volumeMounts:
         - name: site-volume
           mountPath: /data/packages
-        command: ["pypi-server", "-p", "8080", "/data/packages"]
+        command: ["pypi-server", "-p", "8080", "-v", "--log-file", "/dev/stdout", "/data/packages"]
       volumes:
       - name: site-volume
         hostPath:

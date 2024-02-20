@@ -12,5 +12,5 @@ services:
       - ./packages:/app/packages
     ports:
       - "8080:8080"
-    command: ["pypi-server", "run",  "-p", "8080", "site"]
+    command: ["pypi-server", "run", "-p", "8080", "-v", "--log-file", "/dev/stdout", "site"]
 

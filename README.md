@@ -5,6 +5,7 @@
 ```
 mkdir -p packages # パッケージ化するリポジトリを配置する
 mkdir -p dist  # パッケージが出力されるディレクトリ
+mkdir -p site  # 公開されるディレクトリ
 
 cd packages
 git clone https://github.com/psf/requests
@@ -20,7 +21,7 @@ dist 上に配置されたパッケージが pypi server で公開されます�
 dist は常にクリーンアップされます（バージョン管理せず、常に最新版のみ配置されます）
 
 ```
-docker exec -it pypi-server scripts/install_packages.sh packages dist
+docker exec -it pypi-server scripts/install_packages.sh packages site
 ```
 
 pypi サーバーで公開されているパッケージを確認します。
